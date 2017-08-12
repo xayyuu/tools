@@ -105,3 +105,64 @@ git remote -v。
 
 #### 从远程仓库中抓取与拉取  
 如果你使用clone命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以origin为简写。所以git fetch origin会抓取克隆（会上一次抓取）后新推送的所有工作。必须注意git fetch命令会将数据拉取到你的本地仓库-它不会自动合并或修改你当前工作。当准备好你必须手动将其合并入你的工作。   
+
+如果你有一个分支设置为跟踪一个远程分支，可以使用`git pull`命令来自动的抓取然后合并远程分支到当前分支。   
+
+默认情况下，git clone命令会自动设置本地master分支跟踪被克隆的远程仓库master分支（或不管什么名字的默认分支）。   
+
+运行git pull通常会从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支。   
+
+
+#### 推送到远程仓库  
+`git push [romote-name] [branch-name]`
+
+#### 查看远程仓库   
+`git remote show [remote-name]`   
+
+#### 远程仓库的移除与重命名   
+`git remote rename [old name] [new name]`  
+`git remote  rm [name]`
+
+
+## 打标签  
+Git可以给历史中某一个提交打上标签，以示重要。   
+比较有代表性的是人们会使用这个功能来标记发布节点（如V1.0等）。   
+
+#### 列出标签   
+`git tag`  
+`git tag -l 'v1.8.5*'`
+
+#### 创建标签   
+两种标签：轻量标签，附注标签。   
+轻量标签很像一个不会改变的分支，它只是一个特定提交的引用。就是提交`校验和`存储到一个文件中。     
+附注标签包含更多信息：如打标签者的名字、电子邮件、日期时间安、标签信息等。   
+通常建议使用附注标签。   
+`git tag -a v1.4 -m 'my version 1.4'` （其中v1.4就是我们打上的标签）。   
+
+`git show v1.4`（查看）。  
+
+#### 后期打标签   
+通过提交历史上的SHA-1来识别某次提交，并打上标签。   
+`git tag -a v1.2 9fceb02`   
+
+#### 共享标签  
+与远程共享标签。默认情况下，git push命令并不会传送标签到远程仓库服务器上。在创建完标签后你必须显示地推送标签到共享服务器上。   
+
+`git push origin [tagname]`
+
+`git push origin --tags`（推送所有的标签）   
+
+#### 检出标签  
+在git中不能真的检出一个标签，因为git标签不能像分支一样来回移动。   
+
+
+## Git 别名  
+通过配置简化命令长度，与bash中的alias命令功能一样，同样需要在git config中进行配置。   
+```
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+```
