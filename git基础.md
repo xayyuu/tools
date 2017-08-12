@@ -36,3 +36,25 @@ git 自带一个git config的工具来帮助设置控制git外观和行为的配
 $ git config --global user.name "john"
 $ git config --global user.email john@example.com
 ```
+
+
+## Git基础概述  
+这一小节的内容，覆盖了git完成各种工作中将要使用的各种基础命令。   
+
+### 获取git仓库  
+两种方法：  
+- 本地。git init。该命令创建一个名为.git子目录，包含git仓库中所有的必须文件。  
+- 从远程克隆。 git clone。git克隆的是该git仓库服务器上的几乎所有数据，而不是仅仅复制完成你的工作所需要文件，与其他版本控制系统不同。git支持多种数据传输协议，包括http，ssh等。   
+
+### 查看状态  
+git status/git status -s(简单报告)   
+
+git diff：查看暂存区域与当前文件的差异。   
+git diff --cached: 对比`已暂存`内容与`上一次已提交`内容。  
+
+### 提交更新  
+现在暂存已经妥当的，可以提交了。
+添加提交信息，两种方式：
+- [-m]选项，将提交信息与命令放在同一行。  
+- 使用默认编辑器添加。   
+一旦提交，
