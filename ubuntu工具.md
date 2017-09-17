@@ -5,3 +5,4 @@
 
 - free 命令查看内存利用率。
     > 这里又有一个坑。就是free和used加起来不等于total，实际上还有buffer和cached的内存。不过作为普通用户，如果swap都还没用到，就无需担心内存不够用。
+    > 资料：http://cizixs.com/2015/10/01/linux-memory-management-through-free
